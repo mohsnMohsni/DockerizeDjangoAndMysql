@@ -18,8 +18,6 @@ RUN pip install --upgrade pip && pip install --upgrade setuptools
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-RUN apk del build-deps
-
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
