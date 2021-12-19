@@ -3,7 +3,8 @@ FROM python:3.8-alpine
 WORKDIR /app
 COPY ./app /app
 
-# Python can now be prevented from writing .pyc or .pyo files
+# Python can now be prevented from writing .pyc or .pyo files,
+# for cache (first time build and then use this compiled file)
 ENV PYTHONDONTWRITEBYTECODE 1
 # ensures that the python output is sent straight to terminal (e.g. your container log),
 # without being first buffered and that you can see the output of your application (e.g. django logs) in real time
@@ -21,5 +22,6 @@ RUN pip install -r requirements.txt
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-
-ENTRYPOINT [ "/entrypoint.sh" ]
+RUN ls
+CMD [ "python manage.py runserver 0.0.0.0:8000" ]
+# ENTRYPOINT [ "/entrypoint.sh" ]
