@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    image: homeca
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app:/app
+    environment:
+      - MYSQL_DATABASE=mysqldb
+      - MYSQL_USER=local_user
+      - MYSQL_PASSWORD=local_password1234
+      - MYSQL_HOST=mysqldb
+      - MYSQL_PORT=3306
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:latest
+    ports:
+      - 3030:3306
+    volumes:
+      - ./db_data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=mysqldb
+      - MYSQL_USER=local_user
+      - MYSQL_PASSWORD=local_password1234
+      - MYSQL_ROOT_PASSWORD=local_root_password1234
