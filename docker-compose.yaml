@@ -13,7 +13,7 @@ services:
       - MYSQL_USER=local_user
       - MYSQL_PASSWORD=local_password1234
       - MYSQL_HOST=mysqldb
-      - MYSQL_PORT=3306
+      - MYSQL_PORT=3030
     depends_on:
       - mysqldb
 
