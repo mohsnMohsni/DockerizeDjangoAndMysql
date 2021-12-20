@@ -15,6 +15,7 @@ RUN apk update
 # add "gcc python3-dev musl-dev" to add mraiadb-dev, then remove deps
 RUN apk add --no-cache gcc python3-dev musl-dev mariadb-dev 
 
+RUN pip install mysqlclient
 RUN pip install --upgrade pip && pip install --upgrade setuptools
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
