@@ -2,7 +2,6 @@ FROM python:3.8-alpine
 
 WORKDIR /app
 COPY ./app /app
-COPY ./entrypoint.sh /app/
 
 # Python can now be prevented from writing .pyc or .pyo files,
 # for cache (first time build and then use this compiled file)
@@ -22,4 +21,6 @@ RUN pip install -r requirements.txt
 
 RUN apk del gcc python3-dev musl-dev
 
-ENTRYPOINT [ "/app/scripts/entrypoint.sh" ]
+COPY ./app/scripts/entrypoint.sh /app/scripts
+
+ENTRYPOINT [ "sh", "/app/scripts/entrypoint.sh" ]
