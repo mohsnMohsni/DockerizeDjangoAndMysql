@@ -76,14 +76,21 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get("MYSQL_DATABASE"),
-        'USER': os.environ.get("MYSQL_USER"),
-        'PASSWORD': os.environ.get("MYSQL_PASSWORD"),
-        'HOST': os.environ.get("MYSQL_HOST"),
-        'PORT': os.environ.get("MYSQL_PORT")
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': "test.db",
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.environ.get("MYSQL_DATABASE"),
+#         'USER': os.environ.get("MYSQL_USER"),
+#         'PASSWORD': os.environ.get("MYSQL_PASSWORD"),
+#         'HOST': os.environ.get("MYSQL_HOST"),
+#         'PORT': os.environ.get("MYSQL_PORT")
+#     }
+# }
 
 
 # Password validation
