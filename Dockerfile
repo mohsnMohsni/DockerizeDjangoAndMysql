@@ -12,12 +12,13 @@ ENV PYTHONUNBUFFERED 1
 
 RUN echo 'nameserver 185.51.200.2'>>/etc/resolv.conf
 RUN apk update
-RUN apk add --virtual build-deps gcc python3-dev musl-dev mariadb-dev 
-RUN apk add jpeg-dev zlib-dev libjpeg
+RUN apk add --no-cache gcc python3-dev musl-dev mariadb-dev 
 
 RUN pip install --upgrade pip && pip install --upgrade setuptools
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
+
+RUN apk del gcc python3-dev musl-dev
 
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

@@ -4,6 +4,7 @@ services:
   app:
     build: .
     image: app
+    container_name: app
     ports:
       - 8000:8000
     volumes:
@@ -11,14 +12,15 @@ services:
     environment:
       - MYSQL_DATABASE=mysqldb
       - MYSQL_USER=local_user
-      - MYSQL_PASSWORD=local_password1234
+      - MYSQL_PASSWORD=1234
       - MYSQL_HOST=mysqldb
-      - MYSQL_PORT=3030
+      - MYSQL_PORT=3306
     depends_on:
       - mysqldb
 
   mysqldb:
     image: mysql:latest
+    container_name: mysql
     ports:
       - 3030:3306
     volumes:
@@ -26,5 +28,5 @@ services:
     environment:
       - MYSQL_DATABASE=mysqldb
       - MYSQL_USER=local_user
-      - MYSQL_PASSWORD=local_password1234
-      - MYSQL_ROOT_PASSWORD=local_root_password1234
+      - MYSQL_PASSWORD=1234
+      - MYSQL_ROOT_PASSWORD=1234
