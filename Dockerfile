@@ -22,7 +22,4 @@ RUN pip install -r requirements.txt
 
 RUN apk del gcc python3-dev musl-dev
 
-COPY ./entrypoint.sh /app
-RUN chmod +x /app/entrypoint.sh
-
-ENTRYPOINT [ "/app/entrypoint.sh" ]
+ENTRYPOINT [ "/app/scripts/entrypoint.sh" ]
