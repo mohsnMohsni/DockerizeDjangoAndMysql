@@ -8,15 +8,15 @@ COPY ./app /app
 ENV PYTHONDONTWRITEBYTECODE 1
 # ensures that the python output is sent straight to terminal (e.g. your container log),
 # without being first buffered and that you can see the output of your application (e.g. django logs) in real time
-ENV PYTHONUNBUFFERED 1 
+ENV PYTHONUNBUFFERED 1
 
 RUN echo 'nameserver 185.51.200.2'>>/etc/resolv.conf
 RUN apk update
 # add "gcc python3-dev musl-dev" to add mraiadb-dev, then remove deps
 RUN apk add --no-cache gcc python3-dev musl-dev mariadb-dev 
 
-RUN pip install mysqlclient
 RUN pip install --upgrade pip && pip install --upgrade setuptools
+RUN pip install mysqlclient
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
