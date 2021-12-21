@@ -12,8 +12,10 @@ ENV PYTHONUNBUFFERED 1
 
 RUN echo 'nameserver 185.51.200.2'>>/etc/resolv.conf
 RUN apk update
-# add "gcc python3-dev musl-dev" to add mraiadb-dev, then remove deps
-RUN apk add --no-cache gcc python3-dev musl-dev mariadb-dev 
+# add "gcc python3-dev musl-dev" to add mraiadb-dev, then remove deps #mysql deps
+RUN apk add --no-cache gcc python3-dev musl-dev mariadb-dev
+# pillow deps
+RUN apk --no-cache add jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev harfbuzz-dev 
 
 RUN pip install --upgrade pip && pip install --upgrade setuptools
 RUN pip install mysqlclient
