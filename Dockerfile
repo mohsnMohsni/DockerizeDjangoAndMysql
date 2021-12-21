@@ -17,6 +17,7 @@ RUN apk add --no-cache gcc python3-dev musl-dev mariadb-dev
 
 RUN pip install --upgrade pip && pip install --upgrade setuptools
 RUN pip install mysqlclient
+RUN pip install backports.zoneinfo[tzdata]
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
